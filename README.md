@@ -56,3 +56,14 @@ fastrbm train -d path/to/data.h5 --filename path/to/rbm.h5 \
 ## Analyze a posteriori
 
 See [this notebook](notebook/analyse_rbm.ipynb)
+
+## Cite this work
+
+```
+@inproceedings{bereux2025fast,
+  title={Fast training and sampling of Restricted Boltzmann Machines},
+  author={B{\'e}reux, Nicolas and Decelle, Aur{\'e}lien and Furtlehner, Cyril and Rosset, Lorenzo and Seoane, Beatriz},
+  booktitle={13th International Conference on Learning Representations-ICLR 2025},
+  year={2025}
+}
+```
