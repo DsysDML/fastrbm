@@ -1,0 +1,78 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fastrbm"
+version = "0.1"
+authors = [
+  {name="Nicolas Béreux", email="nicolas.bereux@gmail.com"},
+  {name="Aurélien Decelle"},
+  {name="Cyril Furtlehner"},
+  {name="Lorenzo Rosset"},
+  {name="Beatriz Seoane"},
+]
+maintainers = [
+  {name = "Nicolas Béreux", email = "nicolas.bereux@gmail.com"},
+]
+description = "Training Trajectory Paradigm for RBMs"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "rbms==3.2.0",
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = ["rbm", "Restricted Boltzmann Machine"]
+
+[project.scripts]
+fastrbm="fastrbm.scripts.entrypoint:main_fastrbm"
+rcm="fastrbm.scripts.entrypoint:main_rcm"
+
+[project.urls]
+Homepage = "https://github.com/DsysDML/fastrbm"
+Issues = "https://github.com/DsysDML/fastrbm/issues"
+
+[tool.ruff]
+
+line-length = 90
+indent-width = 4
+
+# Assume Python 3.11
+target-version = "py311"
+
+[tool.ruff.lint]
+exclude = ["*.ipynb"]
+
+select = ["E4", "E7", "E9", "F"]
+ignore = ["E501"]
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+
+[tool.ruff.format]
+exclude = ["*.ipynb"]
+
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+# Enable auto-formatting of code examples in docstrings. Markdown,
+# reStructuredText code/literal blocks and doctests are all supported.
+#
+# This is currently disabled by default, but it is planned for this
+# to be opt-out in the future.
+docstring-code-format = false
