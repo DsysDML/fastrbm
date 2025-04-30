@@ -6,7 +6,7 @@ from rbms.bernoulli_bernoulli.implement import _compute_energy_visibles
 from torch import Tensor
 from tqdm import tqdm
 
-from ptt.rcm import sample_rcm_bernoulli
+from fastrbm.rcm.rbm import sample_rbm
 
 
 @torch.jit.script
@@ -121,7 +121,7 @@ def parallel_ptt_sampling(
         v, acc_rate, index = swap_config_parallel(v, weight_matrix, vbias, hbias, index)
         acc_rates += acc_rate
         if use_rcm:
-            v[0] = sample_rcm_bernoulli(
+            v[0] = sample_rbm(
                 p_m=rcm["p_m"],
                 mu=rcm["mu"],
                 U=rcm["U"],
