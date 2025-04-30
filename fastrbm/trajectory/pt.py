@@ -7,10 +7,9 @@ from rbms.potts_bernoulli.classes import PBRBM
 from torch import Tensor
 from tqdm import tqdm
 
-from ptt.ptt_sampling_bernoulli import ptt_sampling as ptt_sampling_bernoulli
-from ptt.ptt_sampling_potts import ptt_sampling as ptt_sampling_potts
-from ptt.rcm import sample_rcm
-from ptt.utils import clone_dict, swap_chains
+from fastrbm.trajectory.ptt_sampling_bernoulli import ptt sampling
+from fastrbm.rcm.rbm import sample_rbm
+from fastrbm.utils import clone_dict, swap_chains
 
 
 def sampling_step(
@@ -33,7 +32,7 @@ def sampling_step(
     use_rcm = rcm is not None
     n_chains = chains[0]["visible"].shape[0]
     if use_rcm:
-        gen_rcm = sample_rcm(
+        gen_rcm = sample_rbm(
             params=list_params[0],
             p_m=rcm["p_m"],
             mu=rcm["mu"],
@@ -98,7 +97,7 @@ def ptt_sampling(
         chains
     ), f"list_params and chains must have the same length, but got {len(list_params)} and {len(chains)}"
     if isinstance(list_params[0], BBRBM) and True:
-        return ptt_sampling_bernoulli(
+        return ptt_sampling(
             list_params=list_params,
             chains=chains,
             index=index,
@@ -107,10 +106,6 @@ def ptt_sampling(
             increment=increment,
             show_pbar=show_pbar,
             show_acc_rate=show_acc_rate,
-        )
-    elif isinstance(list_params[0], PBRBM) and True:
-        return ptt_sampling_potts(
-            list_params, chains, index, it_mcmc, increment, show_pbar, show_acc_rate
         )
     if show_pbar:
         pbar = tqdm(total=it_mcmc, leave=False)
@@ -158,7 +153,7 @@ def init_sampling(
         torch.ones(n_gen, list_params[0].vbias.shape[0], device=device, dtype=dtype)
     )
     if use_rcm:
-        init_v = sample_rcm(
+        init_v = sample_rbm(
             params=list_params[0],
             p_m=rcm["p_m"],
             mu=rcm["mu"],
