@@ -7,7 +7,7 @@ from rbms.potts_bernoulli.classes import PBRBM
 from torch import Tensor
 from tqdm import tqdm
 
-from fastrbm.trajectory.ptt_sampling_bernoulli import ptt sampling
+from fastrbm.trajectory.ptt_sampling_bernoulli import ptt_sampling
 from fastrbm.rcm.rbm import sample_rbm
 from fastrbm.utils import clone_dict, swap_chains
 
