@@ -19,7 +19,7 @@ description = "Training Trajectory Paradigm for RBMs"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-  "rbms==3.2.0",
+  "rbms==0.3.2",
 ]
 
 classifiers = [
