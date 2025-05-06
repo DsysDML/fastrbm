@@ -33,7 +33,7 @@ def sampling_step(
     n_chains = chains[0]["visible"].shape[0]
     if use_rcm:
         gen_rcm = sample_rbm(
-            params=list_params[0],
+            #params=list_params[0],
             p_m=rcm["p_m"],
             mu=rcm["mu"],
             U=rcm["U"],
@@ -154,7 +154,7 @@ def init_sampling(
     )
     if use_rcm:
         init_v = sample_rbm(
-            params=list_params[0],
+            #params=list_params[0],
             p_m=rcm["p_m"],
             mu=rcm["mu"],
             U=rcm["U"],
