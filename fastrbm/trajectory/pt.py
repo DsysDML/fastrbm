@@ -7,7 +7,7 @@ from rbms.potts_bernoulli.classes import PBRBM
 from torch import Tensor
 from tqdm import tqdm
 
-from fastrbm.trajectory.ptt_sampling_bernoulli import ptt_sampling
+from fastrbm.trajectory.ptt_sampling_bernoulli import ptt_sampling as ptt_sampling_bernoulli
 from fastrbm.rcm.rbm import sample_rbm
 from fastrbm.utils import clone_dict, swap_chains
 
@@ -97,7 +97,7 @@ def ptt_sampling(
         chains
     ), f"list_params and chains must have the same length, but got {len(list_params)} and {len(chains)}"
     if isinstance(list_params[0], BBRBM) and True:
-        return ptt_sampling(
+        return ptt_sampling_bernoulli(
             list_params=list_params,
             chains=chains,
             index=index,
